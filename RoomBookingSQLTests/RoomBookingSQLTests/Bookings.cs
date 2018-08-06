@@ -16,15 +16,17 @@ namespace RoomBookingSQLTests
         [Fact]
         public void IntReturnID()
         {
+            
             Output.WriteLine("Bookings - ID should be of type Int64 \n");
             conn.Open();
             NpgsqlCommand cmd = new NpgsqlCommand("SELECT id FROM bookings ORDER BY status DESC LIMIT 20", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read()) {
                 var entry = dr[0];
-                Assert.IsType(Type.GetType("System.Int32"), entry);
+                Assert.IsType(Type.GetType("System.Int64"), entry);
             }
             conn.Close();
+            Console.WriteLine("Bookings - ID should be of type Int64 \n");
         }
 
         [Fact]
@@ -40,6 +42,7 @@ namespace RoomBookingSQLTests
                 var entry = dr[0];
                 Assert.Contains(entry, importance);
             }
+            Console.WriteLine("Bookings - Importance should be ! || !! || !!! \n");
         }
         [Fact]
         public void CategoryPredefined()
@@ -55,6 +58,7 @@ namespace RoomBookingSQLTests
                 Assert.Contains(entry, precat);
             }
             conn.Close();
+            Console.WriteLine("Bookings - Category should be one of the predefined selections \n");
         }
         [Fact]
         public void IntAndUnderDay()
@@ -71,10 +75,12 @@ namespace RoomBookingSQLTests
                 Assert.True((int)entry <= 31);
             }
             conn.Close();
+            Console.WriteLine("Bookings - Day should be an int and between 0 and 31 \n");
         }
         [Fact]
         public void IntAndUnderReturnStart()
         {
+            Console.WriteLine("Bookings - Starttime should be an int and under 24 \n");
             Output.WriteLine("Bookings - Starttime should be an int and under 24 \n");
             conn.Open();
             NpgsqlCommand cmd = new NpgsqlCommand("SELECT starttime FROM bookings ORDER BY status DESC LIMIT 20", conn);
@@ -86,6 +92,7 @@ namespace RoomBookingSQLTests
                 Assert.True(((int)entry < 24));
             }
             conn.Close();
+            Console.WriteLine("Bookings - Starttime should be an int and under 24 \n");
         }
 
         [Fact]
@@ -102,6 +109,7 @@ namespace RoomBookingSQLTests
                 Assert.True(((int)entry > 0));
             }
             conn.Close();
+            Console.WriteLine("Bookings - Endtime should be an int and above 0 \n");
         }
     }
 }
