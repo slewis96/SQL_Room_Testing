@@ -1,4 +1,4 @@
-﻿<Properties StartupConfiguration="{5801428B-2ADA-49F2-B299-77369BEA2292}|Default">
+﻿<Properties>
   <MonoDevelop.Ide.Workbench ActiveDocument="RoomBookingSQLTests/Rooms.cs">
     <Files>
       <File FileName="RoomBookingSQLTests/Rooms.cs" Line="23" Column="15" />
