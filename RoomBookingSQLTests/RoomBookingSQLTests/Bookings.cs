@@ -1,7 +1,6 @@
 using System;
 using Xunit;
 using Npgsql;
-using System.IO;
 
 namespace RoomBookingSQLTests
 {
