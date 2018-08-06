@@ -1,7 +1,6 @@
 using System;
 using Xunit;
 using Npgsql;
-using System.IO;
 
 namespace RoomBookingSQLTests
 {
@@ -49,9 +48,7 @@ namespace RoomBookingSQLTests
             }
             conn.Close();
         }
-
         [Fact]
-        [Microsoft.VisualStudio.RoomBookingSQLTests.Bookings.Description("Testing that the day_id is of type integer and greater than 0.")]
         public void IntAndUnderDay()
         {
             conn.Open();
@@ -62,6 +59,35 @@ namespace RoomBookingSQLTests
                 var entry = dr[0];
                 Assert.IsType(Type.GetType("System.Int32"), entry);
                 Assert.True((int)entry > 0);
+            }
+            conn.Close();
+        }
+        [Fact]
+        public void IntAndUnderReturnStart()
+        {
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT starttime FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                var entry = dr[0];
+                Assert.IsType(Type.GetType("System.Int32"), entry);
+                Assert.True(((int)entry < 24));
+            }
+            conn.Close();
+        }
+
+        [Fact]
+        public void IntAndAboveReturnEnd()
+        {
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT endtime FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                var entry = dr[0];
+                Assert.IsType(Type.GetType("System.Int32"), entry);
+                Assert.True(((int)entry > 0));
             }
             conn.Close();
         }
