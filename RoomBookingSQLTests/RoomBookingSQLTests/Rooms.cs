@@ -34,8 +34,20 @@ namespace RoomBookingSQLTests
                 var entry = dr[0];
                 Assert.Contains(entry, importance);
             }
+        }
+        [Fact]
+        public void CategoryPredefined()
+        {
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT category FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+            string[] precat = { "Face-to-Face Interview", "Phone Interview", "Mock Exams", "Exams", "Presentation Rehersal", "1-On-1", "Client Visit", "Management Meeting", "Sparta Day", "Other" };
+            while (dr.Read())
+            {
+                var entry = dr[0];
+                Assert.Contains(entry, precat);
+            }
             conn.Close();
-
         }
     }
 }
