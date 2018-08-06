@@ -6,7 +6,6 @@
 /Users/tech-a53/Projects/RoomBookingSQLTests/RoomBookingSQLTests/bin/Debug/netcoreapp2.1/RoomBookingSQLTests.runtimeconfig.dev.json
 /Users/tech-a53/Projects/RoomBookingSQLTests/RoomBookingSQLTests/bin/Debug/netcoreapp2.1/RoomBookingSQLTests.dll
 /Users/tech-a53/Projects/RoomBookingSQLTests/RoomBookingSQLTests/bin/Debug/netcoreapp2.1/RoomBookingSQLTests.pdb
-/Users/tech-a53/Projects/RoomBookingSQLTests/RoomBookingSQLTests/obj/Debug/netcoreapp2.1/RoomBookingSQLTests.csprojResolveAssemblyReference.cache
 /Users/tech-a53/Projects/RoomBookingSQLTests/RoomBookingSQLTests/obj/Debug/netcoreapp2.1/RoomBookingSQLTests.csproj.CoreCompileInputs.cache
 /Users/tech-a53/Projects/RoomBookingSQLTests/RoomBookingSQLTests/obj/Debug/netcoreapp2.1/RoomBookingSQLTests.AssemblyInfoInputs.cache
 /Users/tech-a53/Projects/RoomBookingSQLTests/RoomBookingSQLTests/obj/Debug/netcoreapp2.1/RoomBookingSQLTests.AssemblyInfo.cs
@@ -26,3 +25,4 @@
 /Users/tech-a58/Projects/SQL_Room_Testing/RoomBookingSQLTests/RoomBookingSQLTests/obj/Debug/netcoreapp2.1/RoomBookingSQLTests.AssemblyInfo.cs
 /Users/tech-a58/Projects/SQL_Room_Testing/RoomBookingSQLTests/RoomBookingSQLTests/obj/Debug/netcoreapp2.1/RoomBookingSQLTests.dll
 /Users/tech-a58/Projects/SQL_Room_Testing/RoomBookingSQLTests/RoomBookingSQLTests/obj/Debug/netcoreapp2.1/RoomBookingSQLTests.pdb
+/Users/tech-a53/Projects/RoomBookingSQLTests/RoomBookingSQLTests/obj/Debug/netcoreapp2.1/RoomBookingSQLTests.csprojAssemblyReference.cache

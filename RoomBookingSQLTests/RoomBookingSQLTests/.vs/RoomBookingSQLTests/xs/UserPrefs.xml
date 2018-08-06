@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{D895EF65-6809-4945-A382-300A9F79C479}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Bookings.cs">
+    <Files>
+      <File FileName="Bookings.cs" Line="14" Column="19" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.RoomBookingSQLTests PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
