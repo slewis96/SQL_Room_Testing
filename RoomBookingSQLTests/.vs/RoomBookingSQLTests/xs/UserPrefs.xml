@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{5801428B-2ADA-49F2-B299-77369BEA2292}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RoomBookingSQLTests/Rooms.cs">
+    <Files>
+      <File FileName="RoomBookingSQLTests/Rooms.cs" Line="23" Column="15" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.RoomBookingSQLTests PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

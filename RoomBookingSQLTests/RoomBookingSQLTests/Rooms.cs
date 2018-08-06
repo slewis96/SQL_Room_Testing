@@ -1,13 +1,14 @@
 using System;
 using Xunit;
 using Npgsql;
+using System.IO;
 
 namespace RoomBookingSQLTests
 {
     public class Rooms
     {
         public NpgsqlConnection conn = new NpgsqlConnection("Server = 127.0.0.1; User Id = postgres;" + "Password=;Database=guitars;");
-        
+
         [Fact]
         public void StringReturnName()
         {
@@ -17,6 +18,7 @@ namespace RoomBookingSQLTests
             while (dr.Read()) {
                 var entry = dr[0];
                 Assert.IsType(Type.GetType("System.String"), entry);
+                Console.WriteLine();
             }
             conn.Close();
         }
