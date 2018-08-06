@@ -5,7 +5,7 @@ using System.IO;
 
 namespace RoomBookingSQLTests
 {
-    public class Rooms
+    public class Bookings
     {
         public NpgsqlConnection conn = new NpgsqlConnection("Server = 127.0.0.1; User Id = postgres;" + "Password=;Database=bookingsystem_development;");
 
