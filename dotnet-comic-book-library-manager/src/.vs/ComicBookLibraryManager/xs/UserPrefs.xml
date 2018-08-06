@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{D30BE089-4B9E-4532-ABE8-5F33EF03C585}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ComicBookLibraryManager/Data/Repository.cs">
+    <Files>
+      <File FileName="ComicBookLibraryManager/Data/Repository.cs" Line="52" Column="31" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.ComicBookLibraryManager PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
