@@ -230,5 +230,46 @@ namespace RoomBookingSQLTests
             }
             conn.Close();
         }
+        [Fact]
+        public void ExistsUserID()
+        {
+            Output.WriteLine("Bookings - id should exist in the users table and be of type Int64 \n");
+            conn.Open();
+            NpgsqlCommand cmdR = new NpgsqlCommand("SELECT id FROM users", conn);
+            NpgsqlDataReader drR = cmdR.ExecuteReader();
+            var userList = new List<Int64>();
+            while (drR.Read())
+            {
+                var entry = Convert.ToInt64(drR[0]);
+                userList.Add(entry);
+            }
+            conn.Close();
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT user_id FROM bookings ORDER BY status DESC LIMIT 10", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                var entry = Convert.ToInt64(dr[0]);
+                Assert.Contains(entry, userList);
+                Assert.IsType(Type.GetType("System.Int64"), entry);
+            }
+            conn.Close();
+            Console.WriteLine("Bookings - id exists in the Rooms table and is of type Int64 \n");
+        }
+        [Fact]
+        public void UserIDEmpty()
+        {
+            Output.WriteLine("Bookings - User ID for unbooked rooms should be blank \n");
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT user_id FROM bookings WHERE status = 'AVAILABLE' LIMIT 10", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                var entry = dr[0];
+                Assert.Equal("", entry.ToString());
+            }
+            conn.Close();
+            Console.WriteLine("Bookings - User ID for unbooked rooms is blank \n");
+        }
     }
 }
