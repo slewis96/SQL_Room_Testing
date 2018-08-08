@@ -15,4 +15,7 @@
     <PackageReference Include="xunit.runner.console" Version="2.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Rooms.cd" />
+  </ItemGroup>
 </Project>
