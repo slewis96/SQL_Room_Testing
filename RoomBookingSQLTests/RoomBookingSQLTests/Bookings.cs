@@ -109,5 +109,21 @@ namespace RoomBookingSQLTests
             conn.Close();
             Console.WriteLine("Bookings - Endtime is an int and above 0 \n");
         }
+
+        [Fact]
+        public void DateReturnDate()
+        {
+            Output.WriteLine("Bookings - Date attribute should be of type Date \n");
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT date FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                var entry = dr[0];
+                Assert.IsType(Type.GetType("System.DateTime"), entry);
+            }
+            conn.Close();
+            Console.WriteLine("Bookings - Date attribute is of type Date \n");
+        }
     }
 }
