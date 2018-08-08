@@ -2,6 +2,7 @@ using System;
 using Xunit;
 using Xunit.Abstractions;
 using Npgsql;
+using System.Collections.Generic;
 
 namespace RoomBookingSQLTests
 {
@@ -13,6 +14,7 @@ namespace RoomBookingSQLTests
         {
             Output = output;
         }
+
         [Fact]
         public void IntReturnID()
         {
@@ -159,6 +161,32 @@ namespace RoomBookingSQLTests
             }
             conn.Close();
             Console.WriteLine("Bookings - Status is one of the predefined selections and a string \n");
+        }
+
+        [Fact]
+        public void ExistsRoomID()
+        {
+            Output.WriteLine("Bookings - room_id should exist in the Rooms table \n");
+            conn.Open();
+            NpgsqlCommand cmdR = new NpgsqlCommand("SELECT id FROM rooms", conn);
+            NpgsqlDataReader drR = cmdR.ExecuteReader();
+            var roomList = new List<Int64>();
+            while (drR.Read())
+            {
+                var entry = Convert.ToInt64(drR[0]);
+                roomList.Add(entry);
+            }
+            conn.Close();
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT room_id FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlDataReader dr = cmdR.ExecuteReader();
+            while (drR.Read())
+            {
+                var entry = Convert.ToInt64(dr[0]);
+                Assert.Contains(entry, roomList);
+            }
+            conn.Close();
+            Console.WriteLine("Bookings - room_id exists in the Rooms table \n");
         }
     }
 }
