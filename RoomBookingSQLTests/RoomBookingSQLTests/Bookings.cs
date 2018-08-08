@@ -181,14 +181,54 @@ namespace RoomBookingSQLTests
             conn.Close();
             conn.Open();
             NpgsqlCommand cmd = new NpgsqlCommand("SELECT room_id FROM bookings ORDER BY status DESC LIMIT 20", conn);
-            NpgsqlDataReader dr = cmdR.ExecuteReader();
-            while (drR.Read())
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
             {
                 var entry = Convert.ToInt64(dr[0]);
                 Assert.Contains(entry, roomList);
             }
             conn.Close();
             Console.WriteLine("Bookings - room_id exists in the Rooms table \n");
+        }
+        [Fact]
+        public void ExistsEmail()
+        {
+            Output.WriteLine("Bookings - Email for booked rooms should exist \n");
+            conn.Open();
+            NpgsqlCommand cmdU = new NpgsqlCommand("SELECT email FROM users", conn);
+            NpgsqlDataReader drU = cmdU.ExecuteReader();
+            var emailList = new List<string>();
+            while (drU.Read())
+            {
+                var entry = drU[0];
+                emailList.Add(entry.ToString());
+            }
+            conn.Close();
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT email FROM bookings WHERE status = 'BOOKED'", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                var entry = dr[0];
+                Assert.Contains(entry, emailList);
+            }
+            conn.Close();
+            Console.WriteLine("Bookings - Email for booked rooms exist \n");
+        }
+        [Fact]
+        public void EmailEmpty()
+        {
+            Output.WriteLine("Bookings - Email for unbooked rooms should equal \"Email\" \n");
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT email FROM bookings WHERE status = 'AVAILABLE' LIMIT 10", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+            var emailList = new List<string>();
+            while (dr.Read())
+            {
+                var entry = dr[0];
+                Assert.Equal("Email", entry);
+            }
+            conn.Close();
         }
     }
 }
