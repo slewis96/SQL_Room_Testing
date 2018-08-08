@@ -188,5 +188,30 @@ namespace RoomBookingSQLTests
             conn.Close();
             Console.WriteLine("Bookings - room_id exists in the Rooms table \n");
         }
+        [Fact]
+        public void ExistsEmail()
+        {
+            Output.WriteLine("Bookings - Email for booked rooms should exist \n");
+            conn.Open();
+            NpgsqlCommand cmdR = new NpgsqlCommand("SELECT email FROM users", conn);
+            NpgsqlDataReader drR = cmdR.ExecuteReader();
+            var emailList = new List<string>();
+            while (drR.Read())
+            {
+                var entry = drR[0];
+                emailList.Add(entry.ToString());
+            }
+            conn.Close();
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT email FROM bookings WHERE status = 'BOOKED'", conn);
+            NpgsqlDataReader dr = cmdR.ExecuteReader();
+            while (drR.Read())
+            {
+                var entry = dr[0];
+                Assert.Contains(entry, emailList);
+            }
+            conn.Close();
+            Console.WriteLine("Bookings - Email for booked rooms exist \n");
+        }
     }
 }
