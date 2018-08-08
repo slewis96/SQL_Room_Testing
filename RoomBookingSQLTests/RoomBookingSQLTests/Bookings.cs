@@ -125,5 +125,40 @@ namespace RoomBookingSQLTests
             conn.Close();
             Console.WriteLine("Bookings - Date attribute is of type Date \n");
         }
+
+        [Fact]
+        public void IntAndAboveParticipants()
+        {
+            Output.WriteLine("Bookings - Participants should be an int and above 0 \n");
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT participants FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                var entry = dr[0];
+                Assert.IsType(Type.GetType("System.Int32"), entry);
+                Assert.True(((int)entry > 0));
+            }
+            conn.Close();
+            Console.WriteLine("Bookings - Participants is an int and above 0 \n");
+        }
+
+        [Fact]
+        public void StatusIntAndPredefined()
+        {
+            Output.WriteLine("Bookings - Status should be one of the predefined selections and a string \n");
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT status FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+            string[] prestat = { "AVAILABLE", "PENDING", "BOOKED"};
+            while (dr.Read())
+            {
+                var entry = dr[0];
+                Assert.Contains(entry, prestat);
+                Assert.IsType(Type.GetType("System.String"), entry);
+            }
+            conn.Close();
+            Console.WriteLine("Bookings - Status is one of the predefined selections and a string \n");
+        }
     }
 }
