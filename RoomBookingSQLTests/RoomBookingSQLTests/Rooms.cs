@@ -16,7 +16,8 @@ namespace RoomBookingSQLTests
         [Fact]
         public void IntReturnID()
         {
-            Output.WriteLine("Rooms - ID should be of type Int64 \n");
+            Output.WriteLine("Rooms    - ID should be of type Int64 \n");
+
             conn.Open();
             NpgsqlCommand cmd = new NpgsqlCommand("SELECT id FROM rooms", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
@@ -26,13 +27,13 @@ namespace RoomBookingSQLTests
                 Assert.IsType(Type.GetType("System.Int64"), entry);
             }
             conn.Close();
-            Console.WriteLine("Rooms - ID is of type Int64 \n");
+            Console.WriteLine("Rooms    - ID is of type Int64 \n");
         }
 
         [Fact]
         public void StringReturnName()
         {
-            Output.WriteLine("Rooms - Name should be of type string \n");
+            Output.WriteLine("Rooms    - Name should be of type string \n");
             conn.Open();
             NpgsqlCommand cmd = new NpgsqlCommand("SELECT room_name FROM rooms", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
@@ -42,7 +43,7 @@ namespace RoomBookingSQLTests
                 Assert.IsType(Type.GetType("System.String"), entry);
             }
             conn.Close();
-            Console.WriteLine("Rooms - Name is of type string \n");
+            Console.WriteLine("Rooms    - Name is of type string \n");
         }
     }
 }
