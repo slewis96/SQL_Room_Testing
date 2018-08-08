@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{5801428B-2ADA-49F2-B299-77369BEA2292}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="RoomBookingSQLTests/Bookings.cs">
     <Files>
-      <File FileName="RoomBookingSQLTests/Bookings.cs" Line="35" Column="59" />
+      <File FileName="RoomBookingSQLTests/Bookings.cs" Line="25" Column="57" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
