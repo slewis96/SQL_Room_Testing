@@ -271,5 +271,35 @@ namespace RoomBookingSQLTests
             conn.Close();
             Console.WriteLine("Bookings - User ID for unbooked rooms is blank \n");
         }
+        [Fact]
+        public void NameEmpty()
+        {
+            Output.WriteLine("Bookings - Name for unbooked rooms should be blank \n");
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT name FROM bookings LIMIT 10", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                var entry = dr[0];
+                Assert.Equal("", entry.ToString());
+            }
+            conn.Close();
+            Console.WriteLine("Bookings - Name for unbooked rooms is blank \n");
+        }
+        [Fact]
+        public void StringReturnNote()
+        {
+            Output.WriteLine("Bookings - Note should be of type string \n");
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT note FROM bookings WHERE status = 'BOOKED' LIMIT 10", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                var entry = dr[0];
+                Assert.IsType(Type.GetType("System.String"), entry);
+            }
+            conn.Close();
+            Console.WriteLine("Bookings - Note is of type string \n");
+        }
     }
 }
