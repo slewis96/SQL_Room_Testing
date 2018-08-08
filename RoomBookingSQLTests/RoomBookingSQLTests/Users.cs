@@ -18,7 +18,7 @@ namespace RoomBookingSQLTests
         {
             Output.WriteLine("Users    - ID should be of type Int64 \n");
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT id FROM users", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT id FROM users;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read()) {
                 var entry = dr[0];
@@ -33,7 +33,7 @@ namespace RoomBookingSQLTests
         {
             Output.WriteLine("Users    - Email should be have contain '@' and '.' \n");
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT email FROM users", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT email FROM users;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
 
             while (dr.Read())
@@ -50,7 +50,7 @@ namespace RoomBookingSQLTests
         {
             Output.WriteLine("Users    - Password should be 60 chars in length \n");
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT encrypted_password FROM users", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT encrypted_password FROM users;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
 
             while (dr.Read())
@@ -66,7 +66,7 @@ namespace RoomBookingSQLTests
         {
             Output.WriteLine("Users    - Name should be of type string \n");
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT name FROM users", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT name FROM users;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {

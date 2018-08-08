@@ -20,7 +20,7 @@ namespace RoomBookingSQLTests
         {
             Output.WriteLine("Bookings - ID should be of type Int64 \n");
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT id FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT id FROM bookings ORDER BY status DESC LIMIT 20;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read()) {
                 var entry = dr[0];
@@ -35,7 +35,7 @@ namespace RoomBookingSQLTests
         {
             Output.WriteLine("Bookings - Importance should be !, !! or !!! \n");
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT importance FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT importance FROM bookings ORDER BY status DESC LIMIT 20;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             string[] importance = { "!", "!!", "!!!" };
             while (dr.Read())
@@ -50,7 +50,7 @@ namespace RoomBookingSQLTests
         {
             Output.WriteLine("Bookings - Category should be one of the predefined selections and type string \n");
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT category FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT category FROM bookings ORDER BY status DESC LIMIT 20;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             string[] precat = { "Face-to-Face Interview", "Phone Interview", "Mock Exams", "Exams", "Presentation Rehersal", "1-On-1", "Client Visit", "Management Meeting", "Sparta Day", "Other" };
             while (dr.Read())
@@ -68,7 +68,7 @@ namespace RoomBookingSQLTests
         {
             Output.WriteLine("Bookings - Day should be an int and between 0 and 31 \n");
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT day_id FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT day_id FROM bookings ORDER BY status DESC LIMIT 20;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -85,7 +85,7 @@ namespace RoomBookingSQLTests
         {
             Output.WriteLine("Bookings - Starttime should be an int and under 24 \n");
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT starttime FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT starttime FROM bookings ORDER BY status DESC LIMIT 20;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -102,7 +102,7 @@ namespace RoomBookingSQLTests
         {
             Output.WriteLine("Bookings - Endtime should be an int and above 0 \n");
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT endtime FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT endtime FROM bookings ORDER BY status DESC LIMIT 20;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -119,7 +119,7 @@ namespace RoomBookingSQLTests
         {
             Output.WriteLine("Bookings - Date attribute should be of type Date \n");
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT date FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT date FROM bookings ORDER BY status DESC LIMIT 20;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -135,7 +135,7 @@ namespace RoomBookingSQLTests
         {
             Output.WriteLine("Bookings - Participants should be an int and above 0 \n");
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT participants FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT participants FROM bookings ORDER BY status DESC LIMIT 20;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -152,7 +152,7 @@ namespace RoomBookingSQLTests
         {
             Output.WriteLine("Bookings - Status should be one of the predefined selections and a string \n");
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT status FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT status FROM bookings ORDER BY status DESC LIMIT 20;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             string[] prestat = { "AVAILABLE", "PENDING", "BOOKED"};
             while (dr.Read())
@@ -168,9 +168,9 @@ namespace RoomBookingSQLTests
         [Fact]
         public void ExistsRoomID()
         {
-            Output.WriteLine("Bookings - room_id should exist in the Rooms table \n");
+            Output.WriteLine("Bookings - Room_id should exist in the Rooms table \n");
             conn.Open();
-            NpgsqlCommand cmdR = new NpgsqlCommand("SELECT id FROM rooms", conn);
+            NpgsqlCommand cmdR = new NpgsqlCommand("SELECT id FROM rooms;", conn);
             NpgsqlDataReader drR = cmdR.ExecuteReader();
             var roomList = new List<Int64>();
             while (drR.Read())
@@ -180,7 +180,7 @@ namespace RoomBookingSQLTests
             }
             conn.Close();
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT room_id FROM bookings ORDER BY status DESC LIMIT 20", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT room_id FROM bookings ORDER BY status DESC LIMIT 20;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -188,14 +188,14 @@ namespace RoomBookingSQLTests
                 Assert.Contains(entry, roomList);
             }
             conn.Close();
-            Console.WriteLine("Bookings - room_id exists in the Rooms table \n");
+            Console.WriteLine("Bookings - Room_id exists in the Rooms table \n");
         }
         [Fact]
         public void ExistsEmail()
         {
             Output.WriteLine("Bookings - Email for booked rooms should exist \n");
             conn.Open();
-            NpgsqlCommand cmdU = new NpgsqlCommand("SELECT email FROM users", conn);
+            NpgsqlCommand cmdU = new NpgsqlCommand("SELECT email FROM users;", conn);
             NpgsqlDataReader drU = cmdU.ExecuteReader();
             var emailList = new List<string>();
             while (drU.Read())
@@ -205,7 +205,7 @@ namespace RoomBookingSQLTests
             }
             conn.Close();
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT email FROM bookings WHERE status = 'BOOKED'", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT email FROM bookings WHERE status = 'BOOKED';", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -220,7 +220,7 @@ namespace RoomBookingSQLTests
         {
             Output.WriteLine("Bookings - Email for unbooked rooms should equal \"Email\" \n");
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT email FROM bookings WHERE status = 'AVAILABLE' LIMIT 10", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT email FROM bookings WHERE status = 'AVAILABLE' LIMIT 10;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             var emailList = new List<string>();
             while (dr.Read())
@@ -233,7 +233,7 @@ namespace RoomBookingSQLTests
         [Fact]
         public void ExistsUserID()
         {
-            Output.WriteLine("Bookings - id should exist in the users table and be of type Int64 \n");
+            Output.WriteLine("Bookings - ID should exist in the users table and be of type Int64 \n");
             conn.Open();
             NpgsqlCommand cmdR = new NpgsqlCommand("SELECT id FROM users", conn);
             NpgsqlDataReader drR = cmdR.ExecuteReader();
@@ -245,7 +245,7 @@ namespace RoomBookingSQLTests
             }
             conn.Close();
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT user_id FROM bookings ORDER BY status DESC LIMIT 10", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT user_id FROM bookings ORDER BY status DESC LIMIT 10;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -254,14 +254,14 @@ namespace RoomBookingSQLTests
                 Assert.IsType(Type.GetType("System.Int64"), entry);
             }
             conn.Close();
-            Console.WriteLine("Bookings - id exists in the Rooms table and is of type Int64 \n");
+            Console.WriteLine("Bookings - ID exists in the Rooms table and is of type Int64 \n");
         }
         [Fact]
         public void UserIDEmpty()
         {
             Output.WriteLine("Bookings - User ID for unbooked rooms should be blank \n");
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT user_id FROM bookings WHERE status = 'AVAILABLE' LIMIT 10", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT user_id FROM bookings WHERE status = 'AVAILABLE' LIMIT 10;", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -270,6 +270,33 @@ namespace RoomBookingSQLTests
             }
             conn.Close();
             Console.WriteLine("Bookings - User ID for unbooked rooms is blank \n");
+        }
+        [Fact]
+        public void ExistsUserName()
+        {
+            Output.WriteLine("Bookings - Name should have a corresponding user_id and name in users table \n");
+            conn.Open();
+            NpgsqlCommand cmdN = new NpgsqlCommand("SELECT id, name FROM users;", conn);
+            NpgsqlDataReader drN = cmdN.ExecuteReader();
+            var nameidList = new List<string[]>();
+            while (drN.Read())
+            {
+                var id = drN[0].ToString();
+                var name = drN[1].ToString();
+                nameidList.Add(new string[] {id, name});
+            }
+            conn.Close();
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT user_id, name FROM bookings WHERE status = 'BOOKED';", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                var id = dr[0].ToString();
+                var name = dr[1].ToString();
+                Assert.Contains(new string[] { id, name }, nameidList);
+            }
+            conn.Close();
+            Console.WriteLine("Bookings - Name has a corresponding user_id and name in users table \n");
         }
     }
 }
