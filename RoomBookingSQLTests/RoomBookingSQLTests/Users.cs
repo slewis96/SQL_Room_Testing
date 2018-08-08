@@ -16,7 +16,7 @@ namespace RoomBookingSQLTests
         [Fact]
         public void IntReturnID()
         {
-            Output.WriteLine("Users - ID should be of type Int64 \n");
+            Output.WriteLine("Users    - ID should be of type Int64 \n");
             conn.Open();
             NpgsqlCommand cmd = new NpgsqlCommand("SELECT id FROM users", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
