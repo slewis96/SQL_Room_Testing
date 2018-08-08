@@ -46,7 +46,7 @@ namespace RoomBookingSQLTests
         [Fact]
         public void CategoryPredefined()
         {
-            Output.WriteLine("Bookings - Category should be one of the predefined selections \n");
+            Output.WriteLine("Bookings - Category should be one of the predefined selections and type string \n");
             conn.Open();
             NpgsqlCommand cmd = new NpgsqlCommand("SELECT category FROM bookings ORDER BY status DESC LIMIT 20", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
@@ -55,9 +55,11 @@ namespace RoomBookingSQLTests
             {
                 var entry = dr[0];
                 Assert.Contains(entry, precat);
+                Assert.IsType(Type.GetType("System.String"), entry);
+
             }
             conn.Close();
-            Console.WriteLine("Bookings - Category is one of the predefined selections \n");
+            Console.WriteLine("Bookings - Category is one of the predefined selections and type string \n");
         }
         [Fact]
         public void IntAndUnderDay()
